@@ -1,5 +1,5 @@
 <?php
-    $dsn = 'mysql:host=localhost;dbname=top2000;charset=utf8';
+    $dsn = 'mysql:host=localhost;dbname=aethon;charset=utf8';
     $username = 'root';
     $password = 'root';
 
@@ -14,6 +14,7 @@
         $offset = (isset($_GET['offset']) && is_numeric($_GET['offset']) ? $_GET['offset'] : 1);
         $limit = (isset($_GET['limit']) && is_numeric($_GET['limit']) ? $_GET['limit'] : 125);
 
+        # Bind all parameters in the query to a value.
         $statement->bindParam(':title', $title, PDO::PARAM_STR);
         $statement->bindParam(':artist', $artist, PDO::PARAM_STR);
         $statement->bindParam(':year', $year, PDO::PARAM_STR);
@@ -21,6 +22,7 @@
         $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
         $statement->execute();
 
+        # Fetch the results and put them in an array.
         foreach($statement->fetchAll() as $song) {
             $songs[sizeof($songs)] = array(
                 'id' => $song['top2000id'],
@@ -32,6 +34,7 @@
             );
         }
 
+        # Print the JSON encoded array so that JavaScript can use it by sending an AJAX request.
         print(json_encode($songs));
     } catch(PDOException $exception) {
         print('Connection Failed: ' . $exception->getMessage());

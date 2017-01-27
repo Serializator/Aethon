@@ -7,14 +7,14 @@
     <body onload="filter()">
         <div id="container">
             <div id="filters">
-                <input type="text" placeholder="Specify the Title" id="filter-title" onchange="filter()" />
-                <input type="text" placeholder="Specify the Artist" id="filter-artist" onchange="filter()" />
-                <input type="text" placeholder="Specify the Year" id="filter-year" onchange="filter()" />
-                <input type="text" placeholder="Specify the Offset" id="filter-offset" onchange="filter()" />
-                <input type="text" placeholder="Specify the Limit" id="filter-limit" onchange="filter()" />
+                <input type="text" placeholder="Specify the Title" id="filter-title" class="filter" onchange="filter()" />
+                <input type="text" placeholder="Specify the Artist" id="filter-artist" class="filter" onchange="filter()" />
+                <input type="text" placeholder="Specify the Year" id="filter-year" class="filter" onchange="filter()" />
+                <input type="text" placeholder="Specify the Minimum Position" id="filter-offset" class="filter" onchange="filter()" />
+                <input type="text" placeholder="Specify the Maximum Position" id="filter-limit" class="filter" onchange="filter()" />
             </div>
 
-            <table id="songs" cellspacing="0">
+            <table id="songs">
                 <thead>
                     <th></th>
                     <th>Nr.</th>
@@ -26,6 +26,7 @@
             </table>
         </div>
 
+        <script src="assets/js/order.js"></script>
         <script src="assets/js/filter.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </body>
